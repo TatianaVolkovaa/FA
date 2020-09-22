@@ -1,4 +1,3 @@
-
 from tkinter import *
 from math import sin, cos, radians
  
@@ -13,20 +12,23 @@ a = 0
 def motion():
     # a - угол
     global a
-    a += 0.9
+    # direction - направление движения, если равно 1 - по часовой стрелке, -1 - против часовой
+    direction = 1   
+    a += direction * 0.9
     # x, y - координаты центра двигающейся точки
     # 300 - цетр окружности, 200 - радиус окружности
     x = 300 + 200 * cos(radians(a)) 
     y = 300 + 200 * sin(radians(a))
-    # r радиус точки
-    r = 10
-    x1 = x - r   
-    y1 = y - r
-    x2 = x + r
-    y2 = y + r
+    # 10 - радиус точки
+    x1 = x - 10   
+    y1 = y - 10
+    x2 = x + 10
+    y2 = y + 10
     # перемещение точки
     c.coords(point, x1, y1, x2, y2) 
-    root.after(16, motion)
+    # speed - скорость движения
+    speed = 20
+    root.after(speed, motion)
     
 motion()
  
